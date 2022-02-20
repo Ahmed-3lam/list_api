@@ -7,15 +7,15 @@ import 'package:injectable/injectable.dart';
 
 import '../utils/log_utils.dart';
 import 'api_response.dart';
+import 'api_urls.dart';
 import 'app_exceptions.dart';
 
 @Injectable()
 class ApiBaseHelper {
-  Future<ApiResponse<T>> getData<T>(Uri url) async {
+  Future<ApiResponse<T>> getData<T>(String url) async {
     var responseJson;
-    final client = new HttpClient();
     try {
-      final response = await http.get(url).timeout(
+      final response = await http.get(Uri.parse(ApiPaths.BASE_URL+url)).timeout(
         const Duration(seconds: 15),
         onTimeout: () {
           Log.e("Time Out Exception");
@@ -23,7 +23,7 @@ class ApiBaseHelper {
         },
       );
 
-      Log.d("path:  "+url.toString());
+      Log.w("path:  "+ApiPaths.BASE_URL+url.toString());
       responseJson = _returnResponse<T>(response);
     } on TimeoutException {
       Log.e("Time Out Exception");

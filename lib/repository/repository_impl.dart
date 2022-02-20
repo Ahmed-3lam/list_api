@@ -17,7 +17,7 @@ class RepositoryImpl implements RepositoryInterface {
   @override
   Future<ApiResponse> getUsers() async {
 
-    return await _apiBaseHelper.getData(Uri.parse(ApiPaths.BASE_URL));
+    return await _apiBaseHelper.getData(ApiPaths.USERS_URL);
 
 
   }
