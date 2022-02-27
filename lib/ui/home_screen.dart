@@ -61,7 +61,7 @@ class HomeScreen extends StatelessWidget {
                           ? Alignment.topLeft
                           : Alignment.centerRight,
                       children: [
-                        if (i != 8 )
+                        if (i != 9 )
                           Container(
                             height: 80,
                             width: 300,
@@ -72,11 +72,11 @@ class HomeScreen extends StatelessWidget {
                                 borderRadius:
                                     BorderRadius.all(Radius.circular(50))),
                           ),
-                        if (i == 8)
+                        if (i == 9)
                           Container(
                             height: 80,
                             width: 300,
-                            padding: EdgeInsets.only(right: 8),
+                            padding: EdgeInsets.only(left: 8),
                             child: DottedBorder(
                               borderType: BorderType.RRect,
                               color: Colors.grey,
@@ -160,36 +160,3 @@ class HomeScreen extends StatelessWidget {
   }
 }
 
-class RPSCustomPainter extends CustomPainter {
-  @override
-  void paint(Canvas canvas, Size size) {
-    Paint paint_0_fill = Paint()..style = PaintingStyle.fill;
-    paint_0_fill.color = Color(0xffffffff).withOpacity(1.0);
-    canvas.drawRRect(
-        RRect.fromRectAndCorners(Rect.fromLTWH(0, 0, size.width, size.height),
-            bottomRight: Radius.circular(size.width * 0.1649485),
-            bottomLeft: Radius.circular(size.width * 0.1649485),
-            topLeft: Radius.circular(size.width * 0.1649485),
-            topRight: Radius.circular(size.width * 0.1649485)),
-        paint_0_fill);
-
-    Paint paint_1_stroke = Paint()
-      ..style = PaintingStyle.stroke
-      ..strokeWidth = size.width * 0.01030928;
-    paint_1_stroke.color = Color(0xfff90c0c).withOpacity(1.0);
-    canvas.drawRRect(
-        RRect.fromRectAndCorners(
-            Rect.fromLTWH(size.width * 0.005154639, size.height * 0.01562500,
-                size.width * 0.9896907, size.height * 0.9687500),
-            bottomRight: Radius.circular(size.width * 0.1597938),
-            bottomLeft: Radius.circular(size.width * 0.1597938),
-            topLeft: Radius.circular(size.width * 0.1597938),
-            topRight: Radius.circular(size.width * 0.1597938)),
-        paint_1_stroke);
-  }
-
-  @override
-  bool shouldRepaint(covariant CustomPainter oldDelegate) {
-    return true;
-  }
-}
