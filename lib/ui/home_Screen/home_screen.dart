@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:list_api/bloc/home_cubit/home_cubit.dart';
 import 'package:list_api/ui/home_Screen/widget/CurveShapedWidget.dart';
 import 'package:list_api/ui/home_Screen/widget/TextContainerWidget.dart';
+
 class HomeScreen extends StatelessWidget {
   const HomeScreen({Key? key}) : super(key: key);
 
@@ -23,45 +24,48 @@ class HomeScreen extends StatelessWidget {
             return ListView.separated(
               padding: const EdgeInsets.all(20),
               itemCount: state.userList.length,
-              itemBuilder: (cx, i) =>
-
-                  Stack(
+              itemBuilder: (cx, i) => Stack(
                 clipBehavior: Clip.none,
-
-
                 children: [
-
                   Positioned(
                     top: 25,
                     child: CurveShapedWidget(
-                      isOdd:i % 2 == 1 ,
+                      isOdd: i % 2 == 1,
                       isCompleted: i != 9,
                     ),
                   ),
                   Stack(
                     children: [
                       TextContainerWidget(
-                        isCompleted:i!=state.userList.length-1 ,
-                        isOdd:i % 2 == 0 ,
+                        isCompleted: i != state.userList.length - 1,
+                        isOdd: i % 2 == 0,
                         name: state.userList[i].name!,
-
                       ),
                       Container(
                         margin: EdgeInsets.only(left: i % 2 == 0 ? 60 : 30),
                         width: 200,
                         height: 4,
-                        color:i!=state.userList.length-1?Colors.orange:Colors.grey,
+                        color: i != state.userList.length - 1
+                            ? Colors.orange
+                            : Colors.grey,
                       ),
                       Positioned(
                           left: i % 2 == 0 ? 50 : 20,
                           bottom: 12,
                           child: CircleAvatar(
                             radius: 12,
-                            backgroundColor: i!=state.userList.length-1?Colors.orange:Colors.grey,
-                            child: i!=state.userList.length-1? const Icon(
-                               Icons.check,
-                              color: Colors.white,
-                            ):const Text("?",style: TextStyle(color: Colors.white),),
+                            backgroundColor: i != state.userList.length - 1
+                                ? Colors.orange
+                                : Colors.grey,
+                            child: i != state.userList.length - 1
+                                ? const Icon(
+                                    Icons.check,
+                                    color: Colors.white,
+                                  )
+                                : const Text(
+                                    "?",
+                                    style: TextStyle(color: Colors.white),
+                                  ),
                           ))
                     ],
                   )
@@ -76,7 +80,6 @@ class HomeScreen extends StatelessWidget {
         }));
   }
 }
-
 
 //Copy this CustomPainter code to the Bottom of the File
 // class RPSCustomPainter extends CustomPainter {
