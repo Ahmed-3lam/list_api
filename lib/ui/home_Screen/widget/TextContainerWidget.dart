@@ -11,7 +11,7 @@ class TextContainerWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       height: 50,
-      width: 150,
+      width: 200,
       margin: EdgeInsets.only(left: isOdd ? 60 : 30),
       decoration: BoxDecoration(
         borderRadius: const BorderRadius.only(
@@ -23,7 +23,7 @@ class TextContainerWidget extends StatelessWidget {
             color: Colors.grey.withOpacity(0.5),
             spreadRadius: 3,
             blurRadius: 7,
-            offset: const Offset(
+            offset: Offset(
                 0, 3), // changes position of shadow
           ),
         ],
